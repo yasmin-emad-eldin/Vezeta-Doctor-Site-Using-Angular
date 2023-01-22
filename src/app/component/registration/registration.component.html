@@ -1,0 +1,278 @@
+<!-- Section: Design Block -->
+<app-nav-bar></app-nav-bar>
+
+<section class="">
+  <!-- Jumbotron -->
+  <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center">
+    
+
+        <div class="col-lg-12 mb-5 mb-lg-0">
+          <div class="card">
+            <div class="card-body py-5 px-md-5">
+              <form [formGroup]="usrFormGroup" (ngSubmit)="userLogin()">
+                <div class="mb-3 row">
+                       
+                  <div class="col-6"> <label for="usrEmail" class="form-label"> Full name</label>
+                    <input type="text" class="form-control"  formControlName="englishName">
+                </div>
+
+                <div class="col-6"><label for="usrEmail" class="form-label">الاسم بالكامل</label>
+                  <input type="text" class="form-control" formControlName="arabicName">
+              </div>
+
+                </div>
+                <div class="mb-3">
+                  <label for="usrEmail" class="form-label">email</label>
+                  <input type="email" class="form-control"  formControlName="doctorEmail">
+                </div>
+                <div class="mb-3">
+                  <label for="usrPass" class="form-label">Password</label>
+                  <input type="password" class="form-control"  formControlName="password">
+              
+                </div>
+                <div class="mb-3 row">
+                      
+                  <div class="col-3"><input type="radio" id="male" formControlName="doctorGender" value="male">
+                      <label for="html">Male</label><br></div>
+                    <div class="col-6"><input type="radio" id="female" formControlName="doctorGender" value="female">
+                      <label for="css">Female</label><br></div> 
+                    
+                </div>
+                <div class="mb-3">
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <label for="gender"> Select specialization</label>
+                      <select formControlName="specialization_english"  class="form-control ">
+                        <!-- <option value="none" selected>specialization</option> -->
+                       
+                        <option  *ngFor="let option of doctorSpecializationOptionsEN" value={{option}}>{{option}}</option>
+                      </select>
+                  </div>
+                    <div class="col-6">
+                      <label for="gender">اختر التخصص</label>
+                      <select formControlName="specialization_arabic"  class="form-control ">
+                      <!-- <option value="none" selected>التخصص</option> -->
+                      <option  *ngFor="let option of doctorSpecializationOptionsAr" value={{option}}>{{option}}</option>
+                      </select>
+                    </div>
+                  
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-12">
+                      <label for="gender"> Select city</label>
+                      <select formControlName="doctorLocation"  class="form-control ">
+                        <!-- <option value="none" selected>city</option> -->
+                  
+                        <option  *ngFor="let option of counteryEN" value={{option}}>{{option}}</option>
+                        
+                      </select>
+                  </div>
+                    <!-- <div class="col-6">
+                      <label for="gender">اخترالمدينة</label>
+                      <select formControlName="specialization_arabic"  class="form-control ">
+                        <option  *ngFor="let option of counteryAR" value={{option}}>{{option}}</option>
+                      </select>
+                    </div> -->
+                  </div>
+                  <div class="mb-3  row">
+                       
+                    <div class="col-4"> <label for="usrEmail" class="form-label"> Fees</label>
+                      <input type="text" class="form-control"  formControlName="fees">
+                  </div>
+  
+                  <div class="col-4"><label for="usrEmail" class="form-label">Entity</label>
+                    <input type="text" class="form-control" formControlName="entity">
+                </div>
+                <div class="col-4"><label for="usrEmail" class="form-label">Clinic waiting time</label>
+                  <input type="text" class="form-control" formControlName="clinicWaitingTime">
+              </div>
+              <div class="mt-3"> <hr/></div>
+
+                  </div>
+
+                  <!-- //////////////////////////// -->
+                  <div class="mb-3  row">
+                       
+                    <div class="col-6"> <label for="usrEmail" class="form-label"> Profile image</label>
+                      <input type="file" class="form-control"  formControlName="profileImagePath" (change)="onFileChange1($event)">
+                  </div>
+  
+                  <div class="col-6"><label for="usrEmail" class="form-label">Certificate image</label>
+                    <input type="file" class="form-control" formControlName="certificateImagePath" (change)="onFileChange2($event)">
+                </div>
+                <div class="mt-3"> <hr/></div>
+
+                  </div>
+                  <!-- /////////////////////////////////// -->
+                  <div class="mb-3  row">
+                       
+                    <div class="col-4"> <label for="usrEmail" class="form-label"> First clinic image</label>
+                      <input type="file"   class="form-control"  formControlName="image1" (change)="onFileChange3($event)">
+                  </div>
+  
+                  <div class="col-4"><label for="usrEmail" class="form-label"> Second clinic image</label>
+                    <input type="file" class="form-control" formControlName="image2" (change)="onFileChange4($event)">
+                </div>
+                <div class="col-4"><label for="usrEmail" class="form-label"> Third clinic image</label>
+                  <input type="file" class="form-control" formControlName="image3" (change)="onFileChange5($event)">
+              </div>
+              <div class="mt-3"> <hr/></div>
+
+                  </div>
+                  <!-- ///////////////////////// -->
+                  <div class="row mb-4 mt-4">
+                    <div class="col-6 fs-4 text-muted">
+                  First Clinic
+                    </div>
+                    <div class="col-6 fs-4 text-muted">
+                      Second Clinic
+                  
+                    </div>
+                  </div>
+                  <div class="row mb-0">
+                    <div class="col-5 ">
+                      <div class="row mb-3">
+                        <div class="row  mb-2 fs-6 text-muted">
+                          <label for="gender">  Clinic Days</label>
+                  </div>
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control"  formControlName="time1" placeholder="HH:MM AM/PM">
+                      
+                      </div>
+                      
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control"  formControlName="day1"  placeholder="DAY">
+                      
+                        </div>
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control"  formControlName="time2" placeholder="HH:MM AM/PM">
+                      
+                          
+                      </div>
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control"  formControlName="day2"  placeholder="DAY">
+                      
+                        </div>
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control"  formControlName="time3" placeholder="HH:MM AM/PM">
+                      
+                          
+                      </div>
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control" formControlName="day3"  placeholder="DAY">
+                      
+                        </div>
+                        <div class="row  mb-2 fs-6 text-muted">
+                          <label for="gender">  Clinic Address</label>
+                  </div>
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control"  formControlName="placeEnglish" placeholder="address">
+                      
+                          
+                      </div>
+                      
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control"  formControlName="placeArabic"  placeholder="العنوان">
+                      
+                        </div>
+                        <div class="row  mb-2 fs-6 text-muted">
+                          <label for="gender">  Clinic Name</label>
+                  </div>
+                  <div class="col-6 mb-4">
+                    <input type="text" class="form-control"  formControlName="clinicEnglishName" placeholder="clinic name">
+                  
+                    
+                  </div>
+                  
+                  <div class="col-6 mb-4">
+                    <input type="text" class="form-control"  formControlName="clinicArabicName"  placeholder=" العيادة">
+                  
+                  </div>
+                      </div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-5">
+                      <div class="row mb-3">
+                        <div class="row  mb-2 fs-6 text-muted">
+                          <label for="gender">  Clinic Days</label>
+                  </div>
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control"  formControlName="sectime1" placeholder="HH:MM AM/PM">
+                      
+                      </div>
+                      
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control"  formControlName="secday1"  placeholder="DAY">
+                      
+                        </div>
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control"  formControlName="sectime2" placeholder="HH:MM AM/PM">
+                      
+                          
+                      </div>
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control"  formControlName="secday2"  placeholder="DAY">
+                      
+                        </div>
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control"  formControlName="sectime3" placeholder="HH:MM AM/PM">
+                      
+                          
+                      </div>
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control" formControlName="secday3"  placeholder="DAY">
+                      
+                        </div>
+                        <div class="row  mb-2 fs-6 text-muted">
+                          <label for="gender">  Clinic Address</label>
+                  </div>
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control"  formControlName="secplaceEnglish" placeholder="address">
+                      
+                          
+                      </div>
+                      
+                        <div class="col-6 mb-4">
+                          <input type="text" class="form-control"  formControlName="secplaceArabic"  placeholder="العنوان">
+                      
+                        </div>
+                        <div class="row  mb-2 fs-6 text-muted">
+                          <label for="gender">  Clinic Name</label>
+                  </div>
+                  <div class="col-6 mb-4">
+                    <input type="text" class="form-control"  formControlName="secclinicEnglishName" placeholder="clinic name">
+                  
+                    
+                  </div>
+                  
+                  <div class="col-6 mb-4">
+                    <input type="text" class="form-control" formControlName="secclinicArabicName"  placeholder=" العيادة">
+                  
+                  </div>
+                      </div>
+                    </div>
+                    </div>
+
+                  </div>
+                
+                  <div class="row"><button type="submit" class="btn btn-primary btn-block mb-4">
+                    Sign up
+                  </button></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->   
+<!-- <div class="form-outline mb-4 form-group">
+  <input formControlName="profileImagePath"
+  id="profileImagePath" 
+  type="file"   class="form-control form-control-lg"  (change)="onFileChange($event)"  />
+  <label class="form-label" for="form3Example4cdg">Image</label>
+</div> -->
